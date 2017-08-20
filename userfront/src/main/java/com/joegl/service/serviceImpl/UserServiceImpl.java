@@ -1,15 +1,19 @@
 package com.joegl.service.serviceImpl;
 
+import com.joegl.Dao.RoleDao;
 import com.joegl.Dao.UserDao;
 import com.joegl.domain.User;
+import com.joegl.domain.security.UserRole;
 import com.joegl.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 
 @Service
@@ -21,12 +25,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
-//    @Autowired
-//    private RoleDao roleDao;
-//
-//    @Autowired
-//    private BCryptPasswordEncoder passwordEncoder;
-//
+    @Autowired
+    private RoleDao roleDao;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
 //    @Autowired
 //    private AccountService accountService;
 
@@ -43,29 +47,29 @@ public class UserServiceImpl implements UserService {
     }
 
 
-//    public User createUser(User user, Set<UserRole> userRoles) {
-//        User localUser = userDao.findByUsername(user.getUsername());
-//
-//        if (localUser != null) {
-//            LOG.info("User with username {} already exist. Nothing will be done. ", user.getUsername());
-//        } else {
-//            String encryptedPassword = passwordEncoder.encode(user.getPassword());
-//            user.setPassword(encryptedPassword);
-//
-//            for (UserRole ur : userRoles) {
-//                roleDao.save(ur.getRole());
-//            }
-//
-//            user.getUserRoles().addAll(userRoles);
-//
+    public User createUser(User user, Set<UserRole> userRoles) {
+        User localUser = userDao.findByUsername(user.getUsername());
+
+        if (localUser != null) {
+            LOG.info("User with username {} already exist. Nothing will be done. ", user.getUsername());
+        } else {
+            String encryptedPassword = passwordEncoder.encode(user.getPassword());
+            user.setPassword(encryptedPassword);
+
+            for (UserRole ur : userRoles) {
+                roleDao.save(ur.getRole());
+            }
+
+            user.getUserRoles().addAll(userRoles);
+
 //            user.setPrimaryAccount(accountService.createPrimaryAccount());
 //            user.setSavingsAccount(accountService.createSavingsAccount());
-//
-//            localUser = userDao.save(user);
-//        }
-//
-//        return localUser;
-//    }
+
+            localUser = userDao.save(user);
+        }
+
+        return localUser;
+    }
 
     public boolean checkUserExists(String username, String email){
         if (checkUsernameExists(username) || checkEmailExists(email)) {
@@ -95,9 +99,9 @@ public class UserServiceImpl implements UserService {
         return userDao.save(user);
     }
 
-//    public List<User> findUserList() {
-//        return userDao.findAll();
-//    }
+    public List<User> findUserList() {
+        return (List<User>) userDao.findAll();
+    }
 
     public void enableUser (String username) {
         User user = findByUsername(username);

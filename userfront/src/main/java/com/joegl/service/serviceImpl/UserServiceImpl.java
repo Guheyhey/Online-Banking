@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService {
 //    }
 
     public boolean checkUserExists(String username, String email){
-        if (checkUsernameExists(username) || checkEmailExists(username)) {
+        if (checkUsernameExists(username) || checkEmailExists(email)) {
             return true;
         } else {
             return false;

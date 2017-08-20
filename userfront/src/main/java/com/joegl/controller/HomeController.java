@@ -1,6 +1,6 @@
 package com.joegl.controller;
 
-import com.joegl.Dao.RoleDao;
+import com.joegl.dao.RoleDao;
 import com.joegl.domain.User;
 import com.joegl.domain.security.UserRole;
 import com.joegl.service.UserService;
@@ -45,26 +45,21 @@ public class HomeController {
 
         if (userService.checkUserExists(user.getUsername(), user.getEmail())) {
 
-            System.out.println("you get here");
-
             if (userService.checkEmailExists(user.getEmail())) {
                 model.addAttribute("emailExists", true);
-                System.out.println("email exists");
             }
 
 
             if (userService.checkUsernameExists(user.getUsername())) {
                 model.addAttribute("usernameExists", true);
-                System.out.println("username exists");
             }
 
             return "signup";
         } else {
-            System.out.println("you come to else");
             Set<UserRole> userRoles = new HashSet<>();
-            userRoles.add(new UserRole(user, roleDao.findByName("USER")));
+            userRoles.add(new UserRole(user, roleDao.findByName("ROLE_USER")));
             userService.createUser(user, userRoles);
-            userService.save(user);
+//            userService.save(user);
 
             return "redirect:/";
         }

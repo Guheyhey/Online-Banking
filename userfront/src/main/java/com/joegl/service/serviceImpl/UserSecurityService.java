@@ -1,6 +1,6 @@
 package com.joegl.service.serviceImpl;
 
-import com.joegl.Dao.UserDao;
+import com.joegl.dao.UserDao;
 import com.joegl.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

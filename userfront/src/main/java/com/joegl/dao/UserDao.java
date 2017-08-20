@@ -1,4 +1,4 @@
-package com.joegl.Dao;
+package com.joegl.dao;
 
 import com.joegl.domain.User;
 import org.springframework.data.repository.CrudRepository;

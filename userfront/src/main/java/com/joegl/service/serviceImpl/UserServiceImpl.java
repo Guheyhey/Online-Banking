@@ -1,9 +1,10 @@
 package com.joegl.service.serviceImpl;
 
-import com.joegl.Dao.RoleDao;
-import com.joegl.Dao.UserDao;
+import com.joegl.dao.RoleDao;
+import com.joegl.dao.UserDao;
 import com.joegl.domain.User;
 import com.joegl.domain.security.UserRole;
+import com.joegl.service.AccountService;
 import com.joegl.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,8 +32,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-//    @Autowired
-//    private AccountService accountService;
+    @Autowired
+    private AccountService accountService;
 
     public void save(User user) {
         userDao.save(user);
@@ -62,8 +63,8 @@ public class UserServiceImpl implements UserService {
 
             user.getUserRoles().addAll(userRoles);
 
-//            user.setPrimaryAccount(accountService.createPrimaryAccount());
-//            user.setSavingsAccount(accountService.createSavingsAccount());
+            user.setPrimaryAccount(accountService.createPrimaryAccount());
+            user.setSavingsAccount(accountService.createSavingsAccount());
 
             localUser = userDao.save(user);
         }

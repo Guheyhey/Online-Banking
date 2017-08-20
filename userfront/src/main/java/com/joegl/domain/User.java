@@ -11,6 +11,9 @@ public class User {
     private String firstName;
     private String lastName;
 
+    private String email;
+    private String phone;
+
     private boolean enabled = true;
 
     private PrimaryAccount primaryAccount;
@@ -103,7 +106,23 @@ public class User {
         this.recipientList = recipientList;
     }
 
-//    public Set<UserRole> getUserRoles() {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    //    public Set<UserRole> getUserRoles() {
 //        return userRoles;
 //    }
 //
@@ -120,6 +139,8 @@ public class User {
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
                 ", enabled=" + enabled +
                 ", primaryAccount=" + primaryAccount +
                 ", savingAccount=" + savingAccount +

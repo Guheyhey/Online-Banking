@@ -5,6 +5,7 @@ import com.joegl.domain.PrimaryAccount;
 import com.joegl.domain.SavingsAccount;
 import com.joegl.domain.User;
 import com.joegl.domain.security.UserRole;
+import com.joegl.service.AccountService;
 import com.joegl.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,9 @@ public class HomeController {
 
     @Autowired
     private RoleDao roleDao;
+
+//    @Autowired
+//    private AccountService accountService;
 
     @RequestMapping("/")
     public String home() {
@@ -81,4 +85,6 @@ public class HomeController {
 
         return "userFront";
     }
+
+
 }

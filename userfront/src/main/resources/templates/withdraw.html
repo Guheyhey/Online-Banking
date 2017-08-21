@@ -20,6 +20,7 @@
                 <div class="form-group">
                     <label>2. Please specify the amount you would like to withdraw: </label>
                     <span class="input-group-addon">Amount $</span>
+                    <h3><span class="bg-danger pull-right" th:if="${invalid_number}">Invalid Number!</span></h3>
                     <input th:value="${amount}" type="text" name="amount" id="amount" class="form-control" aria-label="Amount (to the nearest dollar)"/>
                 </div>
 

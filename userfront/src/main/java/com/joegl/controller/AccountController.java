@@ -1,9 +1,8 @@
 package com.joegl.controller;
 
-import com.joegl.domain.PrimaryAccount;
-import com.joegl.domain.SavingsAccount;
-import com.joegl.domain.User;
+import com.joegl.domain.*;
 import com.joegl.service.AccountService;
+import com.joegl.service.TransactionService;
 import com.joegl.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @RequestMapping("/account")
@@ -24,13 +24,20 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
+    @Autowired
+    private TransactionService transactionService;
+
     @RequestMapping("/primaryAccount")
     public String primaryAccount(Model model, Principal principal) {
+
+        List<PrimaryTransaction> primaryTransactionList =
+                transactionService.findPrimaryTransactionList(principal.getName());
+
         User user = userService.findByUsername(principal.getName());
         PrimaryAccount primaryAccount = user.getPrimaryAccount();
 
         model.addAttribute("primaryAccount", primaryAccount);
-
+        model.addAttribute("primaryTransactionList", primaryTransactionList);
         return "primaryAccount";
     }
 
@@ -39,7 +46,11 @@ public class AccountController {
         User user = userService.findByUsername(principal.getName());
         SavingsAccount savingsAccount = user.getSavingsAccount();
 
+        List<SavingsTransaction> savingsTransactionList =
+                transactionService.findSavingsTransactionList(principal.getName());
+
         model.addAttribute("savingsAccount", savingsAccount);
+        model.addAttribute("savingsTransactionList", savingsTransactionList);
         return "savingsAccount";
     }
 

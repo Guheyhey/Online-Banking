@@ -6,7 +6,7 @@
 <div class="container main">
     <div class="row">
         <div class="col-md-6">
-            <form th:action="@{/account/withdraw}" method="post">
+            <form th:action="@{/account/withdraw}" method="post" data-toggle="validator">
                 <div class="form-group" >
                     <label for="accountType">1. Please select the account you would like to withdraw:</label>
                     <select class="form-control" th:value="${accountType}" name="accountType" id="accountType" required="required">
@@ -21,7 +21,14 @@
                     <label>2. Please specify the amount you would like to withdraw: </label>
                     <span class="input-group-addon">Amount $</span>
                     <h3><span class="bg-danger pull-right" th:if="${invalid_number}">Invalid Number!</span></h3>
-                    <input th:value="${amount}" type="text" name="amount" id="amount" class="form-control" aria-label="Amount (to the nearest dollar)"/>
+                    <input th:value="${amount}"
+                           type="text"
+                           name="amount"
+                           id="amount"
+                           class="form-control"
+                           aria-label="Amount (to the nearest dollar)"
+                           pattern="^[0-9]+(\.[0-9]+)?$"
+                           required = "required"/>
                 </div>
 
                 <input type="hidden"

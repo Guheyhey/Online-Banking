@@ -64,20 +64,9 @@ public class AccountController {
     @RequestMapping(value = "/deposit", method = RequestMethod.POST)
     public String depositPOST(@ModelAttribute("amount") String amount,
                               @ModelAttribute("accountType") String accountType,
-                              Principal principal,
-                              Model model) {
+                              Principal principal) {
 
-        Double a;
-        try {
-            a = Double.parseDouble(amount);
-
-        } catch (Exception e) {
-
-            model.addAttribute("invalid_number", true);
-            return "deposit";
-        }
-
-        accountService.deposit(accountType, a, principal);
+        accountService.deposit(accountType, Double.parseDouble(amount), principal);
 
         return "redirect:/userFront";
     }
@@ -94,19 +83,9 @@ public class AccountController {
     @RequestMapping(value = "/withdraw", method = RequestMethod.POST)
     public String withdrawPOST(@ModelAttribute("amount") String amount,
                                @ModelAttribute("accountType") String accountType,
-                               Principal principal,
-                               Model model) {
+                               Principal principal) {
 
-        Double a;
-        try {
-            a = Double.parseDouble(amount);
-
-        } catch (Exception e) {
-
-            model.addAttribute("invalid_number", true);
-            return "withdraw";
-        }
-        accountService.withdraw(accountType, a, principal);
+        accountService.withdraw(accountType, Double.parseDouble(amount), principal);
 
         return "redirect:/userFront";
     }

@@ -3,6 +3,7 @@ Online Banking System in Spring boot, Angular and MySQL.
 
 
 ###Online Banking features:
+
 User Front:
 
 > Registration for normal user online banking account.
@@ -125,8 +126,8 @@ This project is divided into three hierarchical parts:
 ![Alt text](https://github.com/Guheyhey/Online-Banking/raw/master/images/a3.PNG) 
 
 
-![Alt text](https://github.com/Guheyhey/Online-Banking/raw/master/images/4.PNG)
+![Alt text](https://github.com/Guheyhey/Online-Banking/raw/master/images/a4.PNG)
 
  
-![Alt text](https://github.com/Guheyhey/Online-Banking/raw/master/images/5.PNG) 
+![Alt text](https://github.com/Guheyhey/Online-Banking/raw/master/images/a5.PNG) 
 

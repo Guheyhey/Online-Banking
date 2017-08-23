@@ -63,7 +63,7 @@ Online Banking System in Spring boot, Angular and MySQL.
 
 ## How to use:
 
-1. Make sure npm, maven, Spring boot cli and Angular are installed.
+1. Make sure **npm**, **maven**, **Spring boot cli** and **Angular cli** are installed.
 
 2. You should change the MySQL connection settings in 
     

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable}  from 'rxjs/Observable';
+import {LoginService} from "../login.service";
 
 @Component({
   selector: 'app-login',

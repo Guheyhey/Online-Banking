@@ -2,9 +2,9 @@
 Online Banking System in Spring boot, Angular and MySQL.
 
 
-###Online Banking features:
+## Online Banking features:
 
-User Front:
+### User Front:
 
 > Registration for normal user online banking account.
 
@@ -20,7 +20,7 @@ User Front:
 
 > Customer can schedule an appointment to a bank.
 
-Admin Portal:
+### Admin Portal:
 
 > Developed Admin Portal using Angular.
 
@@ -34,7 +34,7 @@ Admin Portal:
 
 
 
-Security:
+### Security:
 
 > Secured by Spring Security, user need to log in to access other routes.
 
@@ -42,7 +42,7 @@ Security:
 
 
 
-Database:
+### Database:
 
 >The database contains user, role, user_role, primary_account, primary_account_transaction, savings_account, savings_account_transaction, recipient and appointment.
 
@@ -53,7 +53,7 @@ Database:
 > Admin user need to manually changed his role in database.
 
 
-This project is divided into three hierarchical parts: 
+### This project is divided into three hierarchical parts: 
 
 > User Front end using Spring and Thymeleaf.
 
@@ -61,7 +61,7 @@ This project is divided into three hierarchical parts:
 
 > Backend and database using Spring and MySQL.
 
-###How to use:
+## How to use:
 
 1. Make sure npm, maven, Spring boot cli and Angular are installed.
 
@@ -88,7 +88,7 @@ This project is divided into three hierarchical parts:
 
 7. Now you are all set to test all the features described above.
 
-### Some screenshots
+## Some screenshots
 
 ![Alt text](https://github.com/Guheyhey/Online-Banking/raw/master/images/1.PNG) 
 

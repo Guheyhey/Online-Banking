@@ -101,13 +101,14 @@ public class UserServiceImpl implements UserService {
     }
 
     public List<User> findUserList() {
-        return (List<User>) userDao.findAll();
+        return userDao.findAll();
     }
 
     public void enableUser (String username) {
         User user = findByUsername(username);
         user.setEnabled(true);
         userDao.save(user);
+        System.out.println(username + " is enabled.");
     }
 
     public void disableUser (String username) {

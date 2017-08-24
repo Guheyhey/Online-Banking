@@ -1,5 +1,5 @@
 # Online Banking Project
-Online Banking System in Spring boot, Angular and MySQL.
+Online Banking System using Spring boot, Angular and MySQL.
 
 
 ## Online Banking features:
